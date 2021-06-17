@@ -6,7 +6,7 @@
     <title>Query viewer</title>
 
     <!-- Add Popoto default CSS styles -->
-    <link rel="stylesheet" href="/popoto-examples-master/node_modules/popoto/dist/popoto.min.css">
+    <link rel="stylesheet" href="https://unpkg.com/popoto/dist/popoto.min.css">
     <style>
         #popoto-graph:fullscreen {
             width: 100%;
@@ -57,11 +57,21 @@
 </section>
 
 <!-- Required scripts -->
-<script src="/popoto-examples-master/node_modules/jquery/dist/jquery.min.js" charset="utf-8"></script>
-<script src="/popoto-examples-master/node_modules/d3/dist/d3.min.js" charset="utf-8"></script>
-<script src="/popoto-examples-master/node_modules/popoto/dist/popoto.min.js" charset="utf-8"></script>
-<script>
+<!-- this is what was added during the meeting 
+<script src="https://code.jquery.com/jquery-3.6.0.min.js" charset="utf-8"></script>
+<script src="https://unpkg.com/d3@6.7.0/dist/d3.min.js" charset="utf-8"></script> 
+-->
 
+<!-- next two lines found at the bottom of https://github.com/Nhogs/popoto/wiki/Getting-started -> Add containers for the components to use -->
+<script src="https://unpkg.com/jquery" charset="utf-8"></script>
+<script src="https://unpkg.com/d3" charset="utf-8"></script>
+
+<!-- fix found here: https://github.com/Nhogs/popoto/issues/72 -->
+<script src="https://d3js.org/d3-voronoi.v1.min.js"></script>
+
+<script src="https://unpkg.com/popoto"></script>
+
+<script>
     // Demo Neo4j database settings hosted on GrapheneDb
     popoto.rest.CYPHER_URL = "https://4df5f9a228d637fd054e7d00bea86f52.neo4jsandbox.com:7687/db/data/transaction/commit";
     popoto.rest.AUTHORIZATION = "";//"Basic cG9wb3RvOmIuVlJZQVF2blZjV2tyLlRaYnpmTks5aHp6SHlTdXk=";
