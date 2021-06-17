@@ -73,20 +73,21 @@
 
 <script>
     // Demo Neo4j database settings hosted on GrapheneDb
-    popoto.rest.CYPHER_URL = "https://4df5f9a228d637fd054e7d00bea86f52.neo4jsandbox.com:7687/db/data/transaction/commit";
-    popoto.rest.AUTHORIZATION = "";//"Basic cG9wb3RvOmIuVlJZQVF2blZjV2tyLlRaYnpmTks5aHp6SHlTdXk=";
+    // port changed from 7687 to 7473: https://community.neo4j.com/t/troubleshooting-connection-issues-to-neo4j/129 Nigel Small
+    popoto.rest.CYPHER_URL = "https://4df5f9a228d637fd054e7d00bea86f52.neo4jsandbox.com:7473/db/data/transaction/commit";
+    popoto.rest.AUTHORIZATION = "Basic cG9wb3RvOmIuVlJZQVF2blZjV2tyLlRaYnpmTks5aHp6SHlTdXk=";
 
     // Define the list of label provider to customize the graph behavior:
     // Only two labels are used in Neo4j movie graph example: "Movie" and "Person"
     popoto.provider.node.Provider = {
-        "Person": {
+        "Persons": {
             "returnAttributes": ["name"],
             "constraintAttribute": "name"
         }
     };
 
     // Start the generation using parameter as root label of the query.
-    popoto.start("Person");
+    popoto.start("Persons");
 
 </script>
 </body>
