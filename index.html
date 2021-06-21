@@ -6,7 +6,8 @@
     <title>Query viewer</title>
 
     <!-- Add Popoto default CSS styles -->
-    <link rel="stylesheet" href="https://unpkg.com/popoto/dist/popoto.min.css">
+    <!-- <link rel="stylesheet" href="https://unpkg.com/popoto/dist/popoto.min.css"> -->
+    <link rel="stylesheet" href="../popotoTest/popoto.min.css">
     <style>
         #popoto-graph:fullscreen {
             width: 100%;
@@ -63,30 +64,38 @@
 
 
 <!-- next two lines found at the bottom of https://github.com/Nhogs/popoto/wiki/Getting-started -> Add containers for the components to use -->
-<script src="https://unpkg.com/jquery" charset="utf-8"></script>
-<script src="https://unpkg.com/d3" charset="utf-8"></script>
+<!-- <script src="https://unpkg.com/jquery" charset="utf-8"></script>
+<script src="https://unpkg.com/d3" charset="utf-8"></script> -->
 
 <!-- fix found here: https://github.com/Nhogs/popoto/issues/72 -->
-<script src="https://d3js.org/d3-voronoi.v1.min.js"></script>
+<!-- <script src="https://d3js.org/d3-voronoi.v1.min.js"></script>
 
-<script src="https://unpkg.com/popoto"></script>
+<script src="https://unpkg.com/popoto"></script> -->
+
+<script src="../popotoTest/jquery.min.js" charset="utf-8"></script>
+<script src="../popotoTest/d3.min.js" charset="utf-8"></script>
+<script src="../popotoTest/popoto.min.js" charset="utf-8"></script>
+
 
 <script>
     // Demo Neo4j database settings hosted on GrapheneDb
     // port changed from 7687 to 7473: https://community.neo4j.com/t/troubleshooting-connection-issues-to-neo4j/129 Nigel Small
     popoto.rest.CYPHER_URL = "http://localhost:7474/db/data/transaction/commit";
-    popoto.rest.AUTHORIZATION = "Basic " + btoa("neo4j:RedThread"); //"Basic cG9wb3RvOmIuVlJZQVF2blZjV2tyLlRaYnpmTks5aHp6SHlTdXk=";
+    popoto.rest.AUTHORIZATION =  "Basic " + btoa("neo4j:RedThread"); //"Basic cG9wb3RvOmIuVlJZQVF2blZjV2tyLlRaYnpmTks5aHp6SHlTdXk="; //
 
     // Define the list of label provider to customize the graph behavior:
     // Only two labels are used in Neo4j movie graph example: "Movie" and "Person"
     popoto.provider.node.Provider = {
-        // "Person": {
-        //     "returnAttributes": ["name"],
-        //     "constraintAttribute": "name"
-        // }
+        "Movie": {
+            "returnAttributes": ["title", "released", "tagline"],
+            "constraintAttribute": "title"
+        },
+        "Person": {
+            "returnAttributes": ["name", "born"],
+            "constraintAttribute": "name"
+        }
     };
 
-    // Start the generation using parameter as root label of the query.
     popoto.start("Person");
 
 </script>
