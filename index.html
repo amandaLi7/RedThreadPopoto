@@ -57,10 +57,10 @@
 </section>
 
 <!-- Required scripts -->
-<!-- this is what was added during the meeting 
-<script src="https://code.jquery.com/jquery-3.6.0.min.js" charset="utf-8"></script>
-<script src="https://unpkg.com/d3@6.7.0/dist/d3.min.js" charset="utf-8"></script> 
--->
+<!-- this is what was added during the meeting  -->
+<!-- <script src="https://code.jquery.com/jquery-3.6.0.min.js" charset="utf-8"></script>
+<script src="https://unpkg.com/d3@6.7.0/dist/d3.min.js" charset="utf-8"></script>  -->
+
 
 <!-- next two lines found at the bottom of https://github.com/Nhogs/popoto/wiki/Getting-started -> Add containers for the components to use -->
 <script src="https://unpkg.com/jquery" charset="utf-8"></script>
@@ -74,20 +74,20 @@
 <script>
     // Demo Neo4j database settings hosted on GrapheneDb
     // port changed from 7687 to 7473: https://community.neo4j.com/t/troubleshooting-connection-issues-to-neo4j/129 Nigel Small
-    popoto.rest.CYPHER_URL = "https://4df5f9a228d637fd054e7d00bea86f52.neo4jsandbox.com:7473/db/data/transaction/commit";
-    popoto.rest.AUTHORIZATION = "Basic cG9wb3RvOmIuVlJZQVF2blZjV2tyLlRaYnpmTks5aHp6SHlTdXk=";
+    popoto.rest.CYPHER_URL = "http://localhost:7474/db/data/transaction/commit";
+    popoto.rest.AUTHORIZATION = "Basic " + btoa("neo4j:RedThread"); //"Basic cG9wb3RvOmIuVlJZQVF2blZjV2tyLlRaYnpmTks5aHp6SHlTdXk=";
 
     // Define the list of label provider to customize the graph behavior:
     // Only two labels are used in Neo4j movie graph example: "Movie" and "Person"
     popoto.provider.node.Provider = {
-        "Persons": {
-            "returnAttributes": ["name"],
-            "constraintAttribute": "name"
-        }
+        // "Person": {
+        //     "returnAttributes": ["name"],
+        //     "constraintAttribute": "name"
+        // }
     };
 
     // Start the generation using parameter as root label of the query.
-    popoto.start("Persons");
+    popoto.start("Person");
 
 </script>
 </body>
